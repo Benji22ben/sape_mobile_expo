@@ -3,6 +3,9 @@ import { useAssets } from "expo-asset";
 import React from "react";
 import { View, ImageBackground, Image, Pressable } from "react-native";
 import { useTheme, Button, Text } from "react-native-paper";
+import PrimaryButton from "../components/core/Buttons/PrimaryButton";
+import SecondaryButton from "../components/core/Buttons/SecondaryButton";
+import WrittenLogo from "../components/svg/WrittenLogo";
 
 function AuthenticationScreen() {
   const theme = useTheme();
@@ -38,30 +41,14 @@ function AuthenticationScreen() {
         source={assets ? assets[0] : null}
         resizeMode="cover"
       >
-        <Image
-          style={{ alignSelf: "center" }}
-          source={assets ? assets[1] : null}
-        />
+        <WrittenLogo style={{ alignSelf: "center" }} />
         <View style={{ gap: 50 }}>
-          <Button
-            style={{
-              backgroundColor: theme.colors.primary,
-              borderRadius: 0,
-            }}
-            textColor={theme.colors.tertiary}
-            // onPress={() => navigation.navigate('Login')}
-          >
+          <PrimaryButton onPress={() => console.log("register")}>
             S'inscrire
-          </Button>
-          <Button
-            style={{
-              backgroundColor: theme.colors.tertiary,
-              borderRadius: 0,
-            }}
-            onPress={() => navigation.navigate("Login")}
-          >
+          </PrimaryButton>
+          <SecondaryButton onPress={() => navigation.navigate("Login")}>
             Se connecter
-          </Button>
+          </SecondaryButton>
         </View>
         <Pressable
           style={{ alignSelf: "center" }}
@@ -71,8 +58,8 @@ function AuthenticationScreen() {
           <Text
             style={{
               color: noAccountIsPressed
-                ? theme.colors.tertiary
-                : theme.colors.secondary,
+                ? theme.colors.secondary
+                : theme.colors.tertiary,
               textDecorationLine: "underline",
             }}
           >

@@ -9,9 +9,10 @@ const sape_theme = {
   },
   colors: {
     ...DefaultTheme.colors,
-    primary: "#80EDB9",
-    secondary: "#F6F6F4",
-    tertiary: "#202020",
+    primary: "#EDB480",
+    onPrimary: "#BFFFE1",
+    secondary: "#202020",
+    tertiary: "#F6F6F4",
     error: "#BA1A1A",
   },
 };
@@ -24,9 +25,10 @@ const eco_theme = {
   },
   colors: {
     ...DefaultTheme.colors,
-    primary: "#ED8080",
-    secondary: "#F6F6F4",
-    tertiary: "#202020",
+    primary: "#80EDB9",
+    onPrimary: "#BFFFE1",
+    secondary: "#202020",
+    tertiary: "#F6F6F4",
     error: "#BA1A1A",
   },
 };

@@ -1,29 +1,42 @@
 import React from "react";
 import { View } from "react-native";
-import { useTheme, Button, Text, TextInput } from "react-native-paper";
+import { useTheme, Text, TextInput, Icon } from "react-native-paper";
 import Logo from "../components/svg/Logo";
 import { useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import WrittenSape from "../components/svg/WrittenSape";
 import GoBack from "../components/core/GoBack";
+import PrimaryButton from "../components/core/Buttons/PrimaryButton";
 
-function LoginScreen() {
+function LoginScreen({ toggleMode }) {
   const navigation = useNavigation();
   const theme = useTheme();
   const insets = useSafeAreaInsets();
+
+  const [seeText, setSeeText] = React.useState(true);
+
+  const handleSeeText = () => {
+    setSeeText(!seeText);
+  };
+
+  const handleLogin = () => {
+    navigation.navigate("Home");
+    toggleMode();
+  };
 
   return (
     <View
       style={{
         paddingBottom: 30,
-        paddingTop: insets.top,
+        paddingTop: 50,
         flex: 1,
         flexDirection: "column",
         justifyContent: "space-between",
         ...theme.paddings,
+        backgroundColor: theme.colors.tertiary,
       }}
     >
-      <GoBack navigation={navigation} />
+      <GoBack />
       <Logo style={{ alignSelf: "center" }} />
       <View
         style={{
@@ -37,20 +50,27 @@ function LoginScreen() {
             connectez
           </Text>
         </View>
-        <TextInput placeholder="Nom d'utilisateur" />
         <TextInput
-          //   InputRightElement={<VisibilityIcon />}
-          placeholder="Mot de passe"
+          left={
+            <TextInput.Icon icon="ant_user" color={theme.colors.secondary} />
+          }
+          placeholder="Nom d'utilisateur"
         />
-        <Button
-          style={{
-            backgroundColor: theme.colors.primary,
-            borderRadius: 0,
-          }}
-          textColor={theme.colors.tertiary}
-        >
-          Connexion
-        </Button>
+        <TextInput
+          left={
+            <TextInput.Icon icon="ant_lock" color={theme.colors.secondary} />
+          }
+          right={
+            <TextInput.Icon
+              onPress={handleSeeText}
+              color={theme.colors.secondary}
+              icon="ant_eye"
+            />
+          }
+          placeholder="Mot de passe"
+          secureTextEntry={seeText}
+        />
+        <PrimaryButton onPress={() => handleLogin()}>Connexion</PrimaryButton>
       </View>
       <WrittenSape style={{ alignSelf: "center" }} />
     </View>
