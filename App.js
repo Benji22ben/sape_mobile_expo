@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AuthenticationScreen from "./screens/AuthenticationScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,13 +14,7 @@ import SapeHomeScreen from "./screens/SapeHomeScreen";
 
 export default function App() {
   const isAuth = 0;
-  const [mode, setMode] = React.useState("eco");
-
   const Stack = createNativeStackNavigator();
-
-  const toggleMode = () => {
-    setMode(mode === "eco" ? "sape" : "eco");
-  };
 
   const Icon = (props) => {
     switch (props.name.split("_")[0]) {
@@ -60,9 +54,7 @@ export default function App() {
               name="Authentication"
               component={AuthenticationScreen}
             />
-            <Stack.Screen name="Login">
-              {() => <LoginScreen toggleMode={toggleMode} />}
-            </Stack.Screen>
+            <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen
               name="Home"
               component={mode === "eco" ? EcoHomeScreen : SapeHomeScreen}

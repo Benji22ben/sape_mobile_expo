@@ -8,10 +8,12 @@ import WrittenSape from "../components/svg/WrittenSape";
 import GoBack from "../components/core/GoBack";
 import PrimaryButton from "../components/core/Buttons/PrimaryButton";
 
-function LoginScreen({ toggleMode }) {
+function LoginScreen({}) {
   const navigation = useNavigation();
   const theme = useTheme();
   const insets = useSafeAreaInsets();
+
+  const { mode, toggleMode } = useMode();
 
   const [seeText, setSeeText] = React.useState(true);
 
@@ -19,9 +21,9 @@ function LoginScreen({ toggleMode }) {
     setSeeText(!seeText);
   };
 
-  const handleLogin = () => {
-    navigation.navigate("Home");
+  const handleLogin = async () => {
     toggleMode();
+    navigation.navigate("Home");
   };
 
   return (
