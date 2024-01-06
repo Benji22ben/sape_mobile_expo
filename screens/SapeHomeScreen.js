@@ -2,23 +2,14 @@ import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
+import Box from "../components/core/Box";
 
 function SapeHomeScreen({}) {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
 
   return (
-    <View
-      style={{
-        paddingBottom: 30,
-        paddingTop: 50,
-        gap: 32,
-        flex: 1,
-        flexDirection: "column",
-        ...theme.paddings,
-        backgroundColor: theme.colors.tertiary,
-      }}
-    >
+    <Box style={{ gap: 32 }}>
       <View
         style={{
           flexDirection: "row",
@@ -61,7 +52,7 @@ function SapeHomeScreen({}) {
         </View>
         <Text style={{ alignSelf: "center" }}>Génère ton outfit 😎</Text>
       </View>
-    </View>
+    </Box>
   );
 }
 
