@@ -9,6 +9,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
 import ModeContext from "./context/ModeContext";
 import TabNavigator from "./TabNavigator";
+import CameraScreen from "./screens/CameraScreen";
 
 function Routes() {
   const isAuth = 0;
@@ -56,6 +57,7 @@ function Routes() {
           />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="StackHome" component={TabNavigator} />
+          <Stack.Screen name="Camera" component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

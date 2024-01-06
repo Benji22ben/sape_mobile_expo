@@ -21,7 +21,6 @@ function TabNavigator({ navigation }) {
         name="TabHome"
         component={mode === "eco" ? EcoHomeScreen : SapeHomeScreen}
       />
-      <Tab.Screen name="Camera" component={CameraScreen} />
     </Tab.Navigator>
   );
 }
