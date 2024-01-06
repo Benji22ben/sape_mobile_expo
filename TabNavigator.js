@@ -3,7 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import EcoHomeScreen from "./screens/EcoHomeScreen";
 import SapeHomeScreen from "./screens/SapeHomeScreen";
 import ModeContext from "./context/ModeContext";
-import { View, TouchableOpacity, Text } from "react-native";
+import CameraScreen from "./screens/CameraScreen";
+import TabBar from "./components/TabBar";
 
 function TabNavigator({ navigation }) {
   const Tab = createBottomTabNavigator();
@@ -20,20 +21,8 @@ function TabNavigator({ navigation }) {
         name="TabHome"
         component={mode === "eco" ? EcoHomeScreen : SapeHomeScreen}
       />
+      <Tab.Screen name="Camera" component={CameraScreen} />
     </Tab.Navigator>
-  );
-}
-
-function TabBar({ navigation }) {
-  return (
-    <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-        <Text>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
-        <Text>Settings</Text>
-      </TouchableOpacity>
-    </View>
   );
 }
 
