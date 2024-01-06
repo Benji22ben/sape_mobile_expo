@@ -8,6 +8,7 @@ import WrittenSape from "../components/svg/WrittenSape";
 import GoBack from "../components/core/GoBack";
 import PrimaryButton from "../components/core/Buttons/PrimaryButton";
 import ModeContext from "../context/ModeContext";
+import Box from "../components/core/Box";
 
 function LoginScreen({}) {
   const navigation = useNavigation();
@@ -23,21 +24,12 @@ function LoginScreen({}) {
 
   const handleLogin = async () => {
     toggleMode();
+    // @ts-ignore
     navigation.navigate("StackHome");
   };
 
   return (
-    <View
-      style={{
-        paddingBottom: 30,
-        paddingTop: 50,
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "space-between",
-        ...theme.paddings,
-        backgroundColor: theme.colors.tertiary,
-      }}
-    >
+    <Box style={{ justifyContent: "space-between" }}>
       <GoBack />
       <Logo style={{ alignSelf: "center" }} />
       <View
@@ -75,7 +67,7 @@ function LoginScreen({}) {
         <PrimaryButton onPress={() => handleLogin()}>Connexion</PrimaryButton>
       </View>
       <WrittenSape style={{ alignSelf: "center" }} />
-    </View>
+    </Box>
   );
 }
 

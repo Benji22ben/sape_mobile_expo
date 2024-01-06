@@ -36,6 +36,7 @@ function AuthenticationScreen() {
           justifyContent: "space-between",
           paddingTop: 180,
           paddingBottom: 60,
+          // @ts-ignore
           ...theme.paddings,
         }}
         source={assets ? assets[0] : null}
@@ -46,7 +47,12 @@ function AuthenticationScreen() {
           <PrimaryButton onPress={() => console.log("register")}>
             S'inscrire
           </PrimaryButton>
-          <SecondaryButton onPress={() => navigation.navigate("Login")}>
+          <SecondaryButton
+            onPress={() =>
+              // @ts-ignore
+              navigation.navigate("Login")
+            }
+          >
             Se connecter
           </SecondaryButton>
         </View>

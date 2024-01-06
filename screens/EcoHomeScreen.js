@@ -3,24 +3,17 @@ import { View, Text } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
+import Box from "../components/core/Box";
 
 function EcoHomeScreen() {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
+
+  // FROM API
   const [score, setScore] = useState(Math.random() * 100);
 
   return (
-    <View
-      style={{
-        paddingBottom: 30,
-        paddingTop: 50,
-        gap: 32,
-        flex: 1,
-        flexDirection: "column",
-        ...theme.paddings,
-        backgroundColor: theme.colors.tertiary,
-      }}
-    >
+    <Box style={{ gap: 32 }}>
       <View
         style={{
           flexDirection: "row",
@@ -62,7 +55,7 @@ function EcoHomeScreen() {
           </Text>
         )}
       </AnimatedCircularProgress>
-    </View>
+    </Box>
   );
 }
 
