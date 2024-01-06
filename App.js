@@ -8,7 +8,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ModeProvider>
-        <GestureHandlerRootView>
+        <GestureHandlerRootView style={{ flex: 1 }}>
           <Routes />
         </GestureHandlerRootView>
       </ModeProvider>

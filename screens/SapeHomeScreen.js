@@ -3,13 +3,15 @@ import { View, Text } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
 import Box from "../components/core/Box";
+import SapeCarousel from "../components/SapeCarousel";
+import BaseCarouselCard from "../components/BaseCarouselCard";
 
 function SapeHomeScreen({}) {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
 
   return (
-    <Box style={{ gap: 32 }}>
+    <Box style={{ gap: 48 }}>
       <View
         style={{
           flexDirection: "row",
@@ -25,6 +27,7 @@ function SapeHomeScreen({}) {
           containerColor={theme.colors.primary}
           icon={"entypo_leaf"}
           iconColor={"#FFFFFF"}
+          rippleColor={"#FFFFFF"}
           size={20}
           onPress={() => toggleMode()}
         />
@@ -52,6 +55,23 @@ function SapeHomeScreen({}) {
         </View>
         <Text style={{ alignSelf: "center" }}>Génère ton outfit 😎</Text>
       </View>
+      <SapeCarousel
+        label="Tes tenues favorites"
+        data={[...new Array(10).fill({ brand: "Nike" })]}
+        renderItem={({ index, item }) => {
+          return (
+            <>
+              {item && (
+                <BaseCarouselCard index={index}>
+                  <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                    {item.brand}
+                  </Text>
+                </BaseCarouselCard>
+              )}
+            </>
+          );
+        }}
+      />
     </Box>
   );
 }
