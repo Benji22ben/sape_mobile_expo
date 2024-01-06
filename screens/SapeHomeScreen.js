@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
-import { useMode } from "../hooks/useMode";
-import { useNavigation } from "@react-navigation/native";
+import ModeContext from "../context/ModeContext";
 
 function SapeHomeScreen({}) {
   const theme = useTheme();
-
-  const { toggleMode } = useMode();
+  const { toggleMode } = useContext(ModeContext);
 
   return (
     <View

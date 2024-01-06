@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View } from "react-native";
 import { useTheme, Text, TextInput, Icon } from "react-native-paper";
 import Logo from "../components/svg/Logo";
@@ -7,13 +7,13 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import WrittenSape from "../components/svg/WrittenSape";
 import GoBack from "../components/core/GoBack";
 import PrimaryButton from "../components/core/Buttons/PrimaryButton";
+import ModeContext from "../context/ModeContext";
 
 function LoginScreen({}) {
   const navigation = useNavigation();
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-
-  const { mode, toggleMode } = useMode();
+  const { toggleMode } = useContext(ModeContext);
 
   const [seeText, setSeeText] = React.useState(true);
 
@@ -23,7 +23,7 @@ function LoginScreen({}) {
 
   const handleLogin = async () => {
     toggleMode();
-    navigation.navigate("Home");
+    navigation.navigate("StackHome");
   };
 
   return (
