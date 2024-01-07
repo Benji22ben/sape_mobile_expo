@@ -1,23 +1,35 @@
 import React, { useContext, useState } from "react";
-import { View, Text, Image } from "react-native";
-import { IconButton, useTheme } from "react-native-paper";
+import { View, Text, Image, ScrollView } from "react-native";
+import { Badge, IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Box from "../components/core/Box";
 import SapeCarousel from "../components/SapeCarousel";
 import BaseCarouselCard from "../components/BaseCarouselCard";
 import useSape from "../hooks/useSape";
+import SapeImageCard from "../components/SapeImageCard";
 
 function EcoHomeScreen() {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
-  const { sape } = useSape();
+  const { sape, getScoreColor } = useSape();
 
   // FROM API
   const [score, setScore] = useState(Math.random() * 100);
 
   return (
-    <Box style={{ gap: 48 }}>
+    <ScrollView
+      style={{
+        flex: 1,
+      }}
+      contentContainerStyle={{
+        gap: 88,
+        // @ts-ignore
+        ...theme.paddings,
+        paddingTop: 50,
+        paddingBottom: 30,
+      }}
+    >
       <View
         style={{
           flexDirection: "row",
@@ -64,34 +76,10 @@ function EcoHomeScreen() {
         label="Tes derniers ajouts"
         data={sape}
         renderItem={({ index, item }) => {
-          return (
-            <>
-              {item && (
-                <>
-                  <BaseCarouselCard
-                    index={index}
-                    style={{
-                      padding: 8,
-                      backgroundColor: "#FFFF",
-                    }}
-                  >
-                    <Image
-                      style={{
-                        flex: 1,
-                        width: "100%",
-                        height: undefined,
-                        resizeMode: "contain",
-                      }}
-                      source={item.image}
-                    />
-                  </BaseCarouselCard>
-                </>
-              )}
-            </>
-          );
+          return <>{item && SapeImageCard(index, getScoreColor, item)}</>;
         }}
       />
-    </Box>
+    </ScrollView>
   );
 }
 

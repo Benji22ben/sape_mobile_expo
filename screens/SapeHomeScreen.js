@@ -91,10 +91,12 @@ function SapeHomeScreen({}) {
                   return (
                     <Image
                       style={{
-                        width: width / 2.2,
-                        height: height / 4,
+                        width: width / 2.5,
+                        height: height / 3.4,
                         margin: margin,
+                        resizeMode: "contain",
                       }}
+                      key={index}
                       source={item.image}
                     />
                   );
@@ -105,18 +107,35 @@ function SapeHomeScreen({}) {
       />
       <SapeCarousel
         label="Tes tenues de la semaine"
-        data={[...new Array(10).fill({ brand: "Lundi" })]}
+        data={fits}
         renderItem={({ index, item }) => {
           return (
-            <>
-              {item && (
-                <BaseCarouselCard index={index}>
-                  <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-                    {item.brand}
-                  </Text>
-                </BaseCarouselCard>
-              )}
-            </>
+            <BaseCarouselCard
+              key={index}
+              index={index}
+              style={{
+                flexWrap: "wrap",
+                alignContent: "center",
+                flexDirection: "row",
+                backgroundColor: "#FFFFFF",
+              }}
+            >
+              {item &&
+                item.map((item, index) => {
+                  return (
+                    <Image
+                      style={{
+                        width: width / 2.5,
+                        height: height / 3.4,
+                        margin: margin,
+                        resizeMode: "contain",
+                      }}
+                      key={index}
+                      source={item.image}
+                    />
+                  );
+                })}
+            </BaseCarouselCard>
           );
         }}
       />

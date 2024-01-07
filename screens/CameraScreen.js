@@ -1,12 +1,12 @@
 import { CameraType, Camera } from "expo-camera";
 import React, { useEffect, useState } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View, TouchableOpacity, Text, Dimensions } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 function CameraScreen() {
   const [type, setType] = useState(CameraType.back);
-  // const [permission, requestPermission] = Camera.useCameraPermissions();
   const [cameraPermission, setCameraPermission] = useState(false);
+  const { height, width } = Dimensions.get("window");
 
   const permisionFunction = async () => {
     const cameraPermission = await Camera.requestCameraPermissionsAsync();
