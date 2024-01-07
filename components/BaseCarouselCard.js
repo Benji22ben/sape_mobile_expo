@@ -1,9 +1,10 @@
 import React from "react";
 import { View } from "react-native";
+import { Surface } from "react-native-paper";
 
 function BaseCarouselCard({ children, index, ...props }) {
   return (
-    <View
+    <Surface
       style={{
         flex: 1,
         justifyContent: "center",
@@ -13,7 +14,7 @@ function BaseCarouselCard({ children, index, ...props }) {
       }}
     >
       {children}
-    </View>
+    </Surface>
   );
 }
 

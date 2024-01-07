@@ -1,17 +1,33 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView, Image, Dimensions } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
-import Box from "../components/core/Box";
 import SapeCarousel from "../components/SapeCarousel";
 import BaseCarouselCard from "../components/BaseCarouselCard";
+import useSape from "../hooks/useSape";
 
 function SapeHomeScreen({}) {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
+  const { fits } = useSape();
+  const margin = 4;
+
+  const width = Dimensions.get("window").width / 2 - margin * (2 + 1);
+  const height = Dimensions.get("window").height / 3 - margin * (3 + 1);
 
   return (
-    <Box style={{ gap: 48 }}>
+    <ScrollView
+      style={{
+        flex: 1,
+      }}
+      contentContainerStyle={{
+        gap: 88,
+        // @ts-ignore
+        ...theme.paddings,
+        paddingTop: 50,
+        paddingBottom: 30,
+      }}
+    >
       <View
         style={{
           flexDirection: "row",
@@ -57,7 +73,39 @@ function SapeHomeScreen({}) {
       </View>
       <SapeCarousel
         label="Tes tenues favorites"
-        data={[...new Array(10).fill({ brand: "Nike" })]}
+        data={fits}
+        renderItem={({ index, item }) => {
+          return (
+            <BaseCarouselCard
+              key={index}
+              index={index}
+              style={{
+                flexWrap: "wrap",
+                alignContent: "center",
+                flexDirection: "row",
+                backgroundColor: "#FFFFFF",
+              }}
+            >
+              {item &&
+                item.map((item, index) => {
+                  return (
+                    <Image
+                      style={{
+                        width: width / 2.2,
+                        height: height / 4,
+                        margin: margin,
+                      }}
+                      source={item.image}
+                    />
+                  );
+                })}
+            </BaseCarouselCard>
+          );
+        }}
+      />
+      <SapeCarousel
+        label="Tes tenues de la semaine"
+        data={[...new Array(10).fill({ brand: "Lundi" })]}
         renderItem={({ index, item }) => {
           return (
             <>
@@ -72,7 +120,7 @@ function SapeHomeScreen({}) {
           );
         }}
       />
-    </Box>
+    </ScrollView>
   );
 }
 

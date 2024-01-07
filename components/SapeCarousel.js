@@ -8,6 +8,7 @@ function SapeCarousel({
   label = "",
   onSnapToItem = () => {},
   renderItem,
+  ...props
 }) {
   const width = Dimensions.get("window").width;
 
@@ -16,12 +17,18 @@ function SapeCarousel({
       <Text style={{ fontWeight: "bold", fontSize: 20 }}>{label}</Text>
       <Carousel
         loop={loop}
-        style={{ width: "100%" }}
-        width={width / 3}
-        height={width / 2}
+        style={{
+          width: "100%",
+        }}
+        panGestureHandlerProps={{
+          activeOffsetX: [-10, 10],
+        }}
+        width={width / 2}
+        height={width / 1.3}
         data={data}
         onSnapToItem={onSnapToItem}
         renderItem={renderItem}
+        {...props}
       />
     </View>
   );
