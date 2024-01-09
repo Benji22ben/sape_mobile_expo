@@ -10,7 +10,7 @@ const sape_theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: "#EDB480",
-    onPrimary: "#BFFFE1",
+    onPrimary: "#FFE7D0",
     secondary: "#202020",
     tertiary: "#F6F6F4",
     error: "#BA1A1A",

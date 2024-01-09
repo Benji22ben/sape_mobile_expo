@@ -1,33 +1,25 @@
 import React, { useContext } from "react";
-import { View, Text, ScrollView, Image, Dimensions } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
 import SapeCarousel from "../components/SapeCarousel";
 import BaseCarouselCard from "../components/BaseCarouselCard";
 import useSape from "../hooks/useSape";
+import { useNavigation } from "@react-navigation/native";
+import ScrollBox from "../components/core/ScrollBox";
 
 function SapeHomeScreen({}) {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
   const { fits } = useSape();
   const margin = 4;
+  const navigation = useNavigation();
 
   const width = Dimensions.get("window").width / 2 - margin * (2 + 1);
   const height = Dimensions.get("window").height / 3 - margin * (3 + 1);
 
   return (
-    <ScrollView
-      style={{
-        flex: 1,
-      }}
-      contentContainerStyle={{
-        gap: 88,
-        // @ts-ignore
-        ...theme.paddings,
-        paddingTop: 50,
-        paddingBottom: 30,
-      }}
-    >
+    <ScrollBox gap={88}>
       <View
         style={{
           flexDirection: "row",
@@ -66,7 +58,8 @@ function SapeHomeScreen({}) {
             icon={"entypo_shuffle"}
             iconColor={"#FFFFFF"}
             size={100}
-            onPress={() => console.log("Pressed")}
+            // @ts-ignore
+            onPress={() => navigation.navigate("FitCreation")}
           />
         </View>
         <Text style={{ alignSelf: "center" }}>Génère ton outfit 😎</Text>
@@ -139,7 +132,7 @@ function SapeHomeScreen({}) {
           );
         }}
       />
-    </ScrollView>
+    </ScrollBox>
   );
 }
 

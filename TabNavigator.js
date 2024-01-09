@@ -5,6 +5,7 @@ import SapeHomeScreen from "./screens/SapeHomeScreen";
 import ModeContext from "./context/ModeContext";
 import CameraScreen from "./screens/CameraScreen";
 import TabBar from "./components/TabBar";
+import FitCreationScreen from "./screens/FitCreationScreen";
 
 function TabNavigator({ navigation }) {
   const Tab = createBottomTabNavigator();
@@ -21,6 +22,7 @@ function TabNavigator({ navigation }) {
         name="TabHome"
         component={mode === "eco" ? EcoHomeScreen : SapeHomeScreen}
       />
+      <Tab.Screen name="FitCreation" component={FitCreationScreen} />
     </Tab.Navigator>
   );
 }

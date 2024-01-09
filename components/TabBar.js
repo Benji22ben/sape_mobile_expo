@@ -14,6 +14,9 @@ function TabBar({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate("TabHome")}>
         <Text>Home</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("FitCreation")}>
+        <Text>FitCreation</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("Dressing")}>
         <Text>Dressing</Text>
       </TouchableOpacity>
