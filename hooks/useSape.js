@@ -47,6 +47,14 @@ function useSape() {
     score: 92,
   };
 
+  const [outfitOfTheDay, setOutfitOfTheDay] = React.useState([
+    pull,
+    tshirt,
+    pant,
+    socks,
+    shoes,
+  ]);
+
   const [sape, setSape] = React.useState([pull, tshirt, pant, socks, shoes]);
 
   const [fits, setFits] = React.useState([
@@ -57,7 +65,7 @@ function useSape() {
     [pull, pant, socks, shoes],
   ]);
 
-  return { sape, fits, getScoreColor };
+  return { sape, fits, getScoreColor, outfitOfTheDay };
 }
 
 export default useSape;

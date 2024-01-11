@@ -2,8 +2,11 @@ import React from "react";
 import { Badge } from "react-native-paper";
 import { Image } from "react-native";
 import BaseCarouselCard from "./BaseCarouselCard";
+import useSape from "../hooks/useSape";
 
-function SapeImageCard(index, getScoreColor, item) {
+function SapeImageCard(index, item) {
+  const { getScoreColor } = useSape();
+
   return (
     <BaseCarouselCard
       index={index}
@@ -15,8 +18,11 @@ function SapeImageCard(index, getScoreColor, item) {
       <Badge
         style={{
           alignSelf: "flex-start",
-          backgroundColor: getScoreColor(item.score),
+          backgroundColor: item.score
+            ? getScoreColor(item.score)
+            : "transparent",
         }}
+        size={10}
       />
       <Image
         style={{

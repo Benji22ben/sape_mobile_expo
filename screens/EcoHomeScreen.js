@@ -1,35 +1,23 @@
 import React, { useContext, useState } from "react";
-import { View, Text, Image, ScrollView } from "react-native";
-import { Badge, IconButton, useTheme } from "react-native-paper";
+import { View, Text } from "react-native";
+import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import Box from "../components/core/Box";
 import SapeCarousel from "../components/SapeCarousel";
-import BaseCarouselCard from "../components/BaseCarouselCard";
 import useSape from "../hooks/useSape";
 import SapeImageCard from "../components/SapeImageCard";
+import ScrollBox from "../components/core/ScrollBox";
 
 function EcoHomeScreen() {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
-  const { sape, getScoreColor } = useSape();
+  const { sape } = useSape();
 
   // FROM API
   const [score, setScore] = useState(Math.random() * 100);
 
   return (
-    <ScrollView
-      style={{
-        flex: 1,
-      }}
-      contentContainerStyle={{
-        gap: 88,
-        // @ts-ignore
-        ...theme.paddings,
-        paddingTop: 50,
-        paddingBottom: 30,
-      }}
-    >
+    <ScrollBox gap={88}>
       <View
         style={{
           flexDirection: "row",
@@ -76,10 +64,10 @@ function EcoHomeScreen() {
         label="Tes derniers ajouts"
         data={sape}
         renderItem={({ index, item }) => {
-          return <>{item && SapeImageCard(index, getScoreColor, item)}</>;
+          return <>{item && SapeImageCard(index, item)}</>;
         }}
       />
-    </ScrollView>
+    </ScrollBox>
   );
 }
 
