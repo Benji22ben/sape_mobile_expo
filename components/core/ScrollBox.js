@@ -22,6 +22,7 @@ function ScrollBox({
         ...theme.paddings,
         paddingTop: paddingTop,
         paddingBottom: paddingBottom,
+        ...props.contentContainerStyle,
       }}
     >
       {props.children}

@@ -64,7 +64,7 @@ function EcoHomeScreen() {
         label="Tes derniers ajouts"
         data={sape}
         renderItem={({ index, item }) => {
-          return <>{item && SapeImageCard(index, item)}</>;
+          return <>{item && SapeImageCard({ index, item })}</>;
         }}
       />
     </ScrollBox>
