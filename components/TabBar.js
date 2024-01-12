@@ -1,7 +1,10 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
+import { IconButton, useTheme } from "react-native-paper";
 
 function TabBar({ navigation }) {
+  const theme = useTheme();
+
   return (
     <View
       style={{
@@ -11,15 +14,29 @@ function TabBar({ navigation }) {
         height: 66,
       }}
     >
-      <TouchableOpacity onPress={() => navigation.navigate("TabHome")}>
-        <Text>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("FitCreation")}>
-        <Text>FitCreation</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
-        <Text>Add Sape</Text>
-      </TouchableOpacity>
+      <IconButton
+        icon={"entypo_home"}
+        iconColor={theme.colors.secondary}
+        size={30}
+        rippleColor={"#FFFFFF"}
+        onPress={() => navigation.navigate("TabHome")}
+      />
+      <IconButton
+        icon={"entypo_shuffle"}
+        style={{ top: -20 }}
+        iconColor={theme.colors.tertiary}
+        containerColor={theme.colors.primary}
+        size={40}
+        rippleColor={"#FFFFFF"}
+        onPress={() => navigation.navigate("FitCreation")}
+      />
+      <IconButton
+        icon={"ant_plus"}
+        iconColor={theme.colors.secondary}
+        size={30}
+        rippleColor={"#FFFFFF"}
+        onPress={() => navigation.navigate("Camera")}
+      />
     </View>
   );
 }

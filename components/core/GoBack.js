@@ -1,15 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Pressable } from "react-native";
-import { Icon } from "react-native-paper";
+import { IconButton } from "react-native-paper";
 
-function GoBack() {
+function GoBack({ color = "#020202", style = {} }) {
   const navigation = useNavigation();
 
   return (
-    <Pressable onPress={() => navigation.goBack()}>
-      <Icon size={30} source="ant_left" />
-    </Pressable>
+    <IconButton
+      style={style}
+      size={30}
+      icon="ant_left"
+      iconColor={color}
+      onPress={() => navigation.goBack()}
+    />
   );
 }
 

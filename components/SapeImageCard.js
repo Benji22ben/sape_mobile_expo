@@ -4,14 +4,13 @@ import { Image } from "react-native";
 import BaseCarouselCard from "./BaseCarouselCard";
 import useSape from "../hooks/useSape";
 
-function SapeImageCard({ index, item, style = {} }) {
+function SapeImageCard({ index, item }) {
   const { getScoreColor } = useSape();
 
   return (
     <BaseCarouselCard
       index={index}
       style={{
-        ...style,
         padding: 8,
         backgroundColor: "#FFFF",
       }}
@@ -28,7 +27,8 @@ function SapeImageCard({ index, item, style = {} }) {
       <Image
         style={{
           flex: 1,
-          // width: "100%",
+          width: "100%",
+          height: undefined,
           alignSelf: "center",
           resizeMode: "contain",
         }}

@@ -10,6 +10,7 @@ function Button({ children, ...props }) {
       style={{
         backgroundColor: theme.colors.primary,
         borderRadius: 0,
+        ...props.style,
       }}
       rippleColor={theme.colors.onPrimary}
       textColor={theme.colors.secondary}

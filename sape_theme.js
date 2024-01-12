@@ -13,6 +13,7 @@ const sape_theme = {
     onPrimary: "#FFE7D0",
     secondary: "#202020",
     tertiary: "#F6F6F4",
+    quaternary: "#FCFFFD",
     error: "#BA1A1A",
   },
 };
@@ -29,6 +30,7 @@ const eco_theme = {
     onPrimary: "#BFFFE1",
     secondary: "#202020",
     tertiary: "#F6F6F4",
+    quaternary: "#FCFFFD",
     error: "#BA1A1A",
   },
 };

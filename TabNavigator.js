@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import EcoHomeScreen from "./screens/EcoHomeScreen";
 import SapeHomeScreen from "./screens/SapeHomeScreen";
 import ModeContext from "./context/ModeContext";
-import CameraScreen from "./screens/CameraScreen";
 import TabBar from "./components/TabBar";
 import FitCreationScreen from "./screens/FitCreationScreen";
+import CameraScreen from "./screens/CameraScreen";
 
 function TabNavigator({ navigation }) {
   const Tab = createBottomTabNavigator();

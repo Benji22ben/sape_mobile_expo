@@ -10,6 +10,8 @@ import Entypo from "react-native-vector-icons/Entypo";
 import ModeContext from "./context/ModeContext";
 import TabNavigator from "./TabNavigator";
 import CameraScreen from "./screens/CameraScreen";
+import AddSapeForm from "./screens/AddSapeForm";
+import AddedSape from "./screens/AddedSape";
 
 function Routes() {
   const isAuth = 0;
@@ -57,7 +59,13 @@ function Routes() {
           />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="StackHome" component={TabNavigator} />
-          <Stack.Screen name="Camera" component={CameraScreen} />
+
+          {/* Camera Navigation */}
+          <Stack.Group>
+            <Stack.Screen name="Camera" component={CameraScreen} />
+            <Stack.Screen name="AddSapeForm" component={AddSapeForm} />
+            <Stack.Screen name="AddedSape" component={AddedSape} />
+          </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

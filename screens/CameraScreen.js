@@ -2,11 +2,16 @@ import { CameraType, Camera } from "expo-camera";
 import React, { useEffect, useState } from "react";
 import { View, TouchableOpacity, Text, Dimensions } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { useTheme } from "react-native-paper";
+import Box from "../components/core/Box";
+import { useNavigation } from "@react-navigation/native";
+import GoBack from "../components/core/GoBack";
 
 function CameraScreen() {
   const [type, setType] = useState(CameraType.back);
   const [cameraPermission, setCameraPermission] = useState(false);
   const { height, width } = Dimensions.get("window");
+  const navigation = useNavigation();
 
   const permisionFunction = async () => {
     const cameraPermission = await Camera.requestCameraPermissionsAsync();
@@ -35,15 +40,59 @@ function CameraScreen() {
       current === CameraType.back ? CameraType.front : CameraType.back
     );
   }
+  const theme = useTheme();
 
   return (
-    <Camera style={{ flex: 1, justifyContent: "center" }} type={type}>
-      <View>
+    // <Camera style={{ flex: 1, justifyContent: "center" }} type={type}>
+    <Box
+      style={{
+        backgroundColor: "#020202",
+        justifyContent: "space-between",
+      }}
+    >
+      <GoBack color={theme.colors.tertiary} />
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          alignSelf: "stretch",
+          justifyContent: "space-between",
+        }}
+      >
         <TouchableOpacity onPress={toggleCameraType}>
-          <Text>Flip Camera</Text>
+          <Text style={{ color: "#FFF" }}>Flip</Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            width: 70,
+            height: 70,
+            borderRadius: 100,
+            borderColor: "#FFF",
+            borderWidth: 5,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0)",
+          }}
+        >
+          {/* @ts-ignore */}
+          <TouchableOpacity onPress={() => navigation.navigate("AddSapeForm")}>
+            <View
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 100,
+                padding: 10,
+                backgroundColor: theme.colors.tertiary,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity onPress={toggleCameraType}>
+          <Text style={{ color: "#FFF" }}>Gallery</Text>
         </TouchableOpacity>
       </View>
-    </Camera>
+    </Box>
+    // {/* </Camera> */}
   );
 }
 

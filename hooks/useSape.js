@@ -65,7 +65,7 @@ function useSape() {
     [pull, pant, socks, shoes],
   ]);
 
-  return { sape, fits, getScoreColor, outfitOfTheDay };
+  return { sape, fits, getScoreColor, outfitOfTheDay, pull };
 }
 
 export default useSape;
