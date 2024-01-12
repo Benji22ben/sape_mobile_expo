@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, View, Text, Dimensions } from "react-native";
-import Box from "../components/core/Box";
+import ScrollBox from "../components/core/ScrollBox";
 import GoBack from "../components/core/GoBack";
 import useSape from "../hooks/useSape";
 import { IconButton, useTheme } from "react-native-paper";
@@ -15,11 +15,16 @@ function AddSapeForm() {
   const width = Dimensions.get("window").width;
   const height = Dimensions.get("window").height;
   return (
-    <Box style={{ alignItems: "center" }}>
+    <ScrollBox
+      contentContainerStyle={{
+        alignItems: "center",
+        height: height * 2,
+      }}
+    >
       <GoBack style={{ alignSelf: "flex-start" }} />
       <Image
         source={pull.image}
-        style={{ height: "50%", resizeMode: "contain", alignSelf: "center" }}
+        style={{ height: "25%", resizeMode: "contain", alignSelf: "center" }}
       />
       {/* @ts-ignore */}
       <View
@@ -28,18 +33,19 @@ function AddSapeForm() {
           width: width,
           borderBottomWidth: 1,
           borderBottomColor: theme.colors.secondary,
-          paddingBottom: 64,
+          paddingTop: 16,
+          paddingBottom: 16,
           ...theme.paddings,
           flexDirection: "row",
-          flexShrink: 1,
-          gap: 16,
+          alignSelf: "center",
+          gap: 8,
           justifyContent: "center",
         }}
       >
         <View
           style={{
             backgroundColor: theme.colors.primary,
-            width: 80,
+            width: 70,
             height: 50,
             paddingTop: 8,
             paddingBottom: 8,
@@ -52,7 +58,7 @@ function AddSapeForm() {
         <View
           style={{
             backgroundColor: theme.colors.primary,
-            width: 80,
+            width: 70,
             height: 50,
             paddingTop: 8,
             paddingBottom: 8,
@@ -65,7 +71,7 @@ function AddSapeForm() {
         <View
           style={{
             backgroundColor: theme.colors.primary,
-            width: 80,
+            width: 70,
             height: 50,
             paddingTop: 8,
             paddingBottom: 8,
@@ -78,7 +84,7 @@ function AddSapeForm() {
         <View
           style={{
             backgroundColor: theme.colors.primary,
-            width: 80,
+            width: 70,
             height: 50,
             paddingTop: 8,
             paddingBottom: 8,
@@ -221,7 +227,7 @@ function AddSapeForm() {
       >
         Ajouter{" "}
       </PrimaryButton>
-    </Box>
+    </ScrollBox>
   );
 }
 

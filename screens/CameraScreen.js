@@ -43,13 +43,22 @@ function CameraScreen() {
   const theme = useTheme();
 
   return (
-    // <Camera style={{ flex: 1, justifyContent: "center" }} type={type}>
-    <Box
+    <Camera
+      style={{
+        flex: 1,
+        justifyContent: "space-between",
+        ...theme.paddings,
+        paddingTop: 50,
+        paddingBottom: 30,
+      }}
+      type={type}
+    >
+      {/* <Box
       style={{
         backgroundColor: "#020202",
         justifyContent: "space-between",
       }}
-    >
+    > */}
       <GoBack color={theme.colors.tertiary} />
       <View
         style={{
@@ -91,8 +100,8 @@ function CameraScreen() {
           <Text style={{ color: "#FFF" }}>Gallery</Text>
         </TouchableOpacity>
       </View>
-    </Box>
-    // {/* </Camera> */}
+      {/* </Box> */}
+    </Camera>
   );
 }
 

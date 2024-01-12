@@ -28,17 +28,20 @@ function FitCreationScreen() {
         style={{
           flex: 1,
           alignItems: "flex-start",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           flexDirection: "row",
           flexWrap: "wrap",
         }}
       >
         {outfitOfTheDay.map((item, index) => (
-          <Surface key={index} style={{ padding: 8, margin: 4 }}>
+          <Surface
+            key={index}
+            style={{ padding: 8, margin: 4, flexGrow: 1, alignItems: "center" }}
+          >
             <Image
               source={item.image}
               style={{
-                width: width * (35 / 100),
+                width: width * (30 / 100),
                 height: height * (25 / 100),
                 resizeMode: "contain",
               }}
