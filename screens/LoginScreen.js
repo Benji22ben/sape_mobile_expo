@@ -23,7 +23,7 @@ function LoginScreen({}) {
   };
 
   const handleLogin = async () => {
-    toggleMode();
+    // toggleMode();
     // @ts-ignore
     navigation.navigate("StackHome");
   };

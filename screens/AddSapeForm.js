@@ -101,6 +101,7 @@ function AddSapeForm() {
           width: width,
           borderBottomWidth: 1,
           borderBottomColor: theme.colors.secondary,
+          backgroundColor: theme.colors.quaternary,
           paddingTop: 8,
           paddingBottom: 8,
           ...theme.paddings,
@@ -137,6 +138,7 @@ function AddSapeForm() {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          backgroundColor: theme.colors.quaternary,
         }}
       >
         <Text style={{ color: theme.colors.secondary }}>Motifs</Text>
@@ -167,6 +169,7 @@ function AddSapeForm() {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          backgroundColor: theme.colors.quaternary,
         }}
       >
         <Text style={{ color: theme.colors.secondary }}>Couleur(s)</Text>
@@ -203,6 +206,7 @@ function AddSapeForm() {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          backgroundColor: theme.colors.quaternary,
         }}
       >
         <Text style={{ color: theme.colors.secondary }}>Marque</Text>
