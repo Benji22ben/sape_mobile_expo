@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.sapologiste.sape'
+    namespace 'com.sape.app'
     defaultConfig {
-        applicationId 'com.sapologiste.sape'
+        applicationId 'com.sape.app'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

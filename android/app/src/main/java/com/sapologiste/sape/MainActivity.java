@@ -1,4 +1,4 @@
-package com.sapologiste.sape;
+package com.sape.app;
 
 import android.os.Build;
 import android.os.Bundle;
