@@ -26,7 +26,6 @@ function AddSapeForm() {
         source={pull.image}
         style={{ height: "25%", resizeMode: "contain", alignSelf: "center" }}
       />
-      {/* @ts-ignore */}
       <View
         style={{
           backgroundColor: theme.colors.quaternary,
