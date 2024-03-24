@@ -4,7 +4,7 @@ import { useTheme } from "react-native-paper";
 
 function Box({
   paddingBottom = 30,
-  paddingTop = 50,
+  paddingTop = 65,
   flexDirection = "column",
   ...props
 }) {

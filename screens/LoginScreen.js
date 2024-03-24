@@ -11,6 +11,7 @@ import ModeContext from "../context/ModeContext";
 import Box from "../components/core/Box";
 import { useAuth } from "../hooks/useAuth";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { AuthContext } from "../context/AuthContext";
 
 function LoginScreen({}) {
   const navigation = useNavigation();
@@ -20,7 +21,7 @@ function LoginScreen({}) {
   const { login } = useAuth();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
+  const { checkAuth } = useContext(AuthContext);
   const [seeText, setSeeText] = React.useState(true);
 
   const handleSeeText = () => {
@@ -33,7 +34,8 @@ function LoginScreen({}) {
 
     if (statut.status === 200) {
       //@ts-ignore
-      navigation.navigate("StackHome");
+      // navigation.navigate("StackHome");
+      checkAuth();
     }
   };
 

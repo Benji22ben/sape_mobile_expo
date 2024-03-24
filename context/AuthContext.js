@@ -2,11 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // @ts-ignore
-const AuthContext = createContext({
-  //   isAuth: false,
-  //   checkAuth: () => {},
-  //   logout: () => {},
-});
+const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);

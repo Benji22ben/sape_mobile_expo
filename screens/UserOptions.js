@@ -1,17 +1,22 @@
 import React, { useContext } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import PrimaryButton from "../components/core/Buttons/PrimaryButton";
+import Box from "../components/core/Box";
+import { AuthContext } from "../context/AuthContext";
 
 function UserOptions() {
-  // const [isAuth, setIsAuth] = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
-  // Handle logout
-  const logout = () => {
-    // Clear the token
-    AsyncStorage.removeItem("token");
-    // Redirect to the login page
+  const handleLogout = () => {
+    logout();
   };
 
-  return <div>UserOptions</div>;
+  return (
+    <Box style={{ justifyContent: "center" }}>
+      <PrimaryButton onPress={() => handleLogout()}>
+        Se déconnecter
+      </PrimaryButton>
+    </Box>
+  );
 }
 
 export default UserOptions;

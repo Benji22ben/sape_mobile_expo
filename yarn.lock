@@ -2749,6 +2749,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.28.6":
+  version: 5.28.6
+  resolution: "@tanstack/query-core@npm:5.28.6"
+  checksum: 10c0/bfbbf7b11a3bf97ba6c2a5ff5e78de778f713e63e8682561f0529f5c2cc65020a71fddd849de95337b46be90feae3f1ec54833f0faf1e343cd285c022d927967
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.28.6":
+  version: 5.28.6
+  resolution: "@tanstack/react-query@npm:5.28.6"
+  dependencies:
+    "@tanstack/query-core": "npm:5.28.6"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 10c0/8b36266181eeadc2f2a0135269aab128e5b1c3ef94b06f80360893b332a6cd1757fc445195bb14c47721b76f8e59921b22680fa9751c8d1fc3b2ddb7a9725276
+  languageName: node
+  linkType: hard
+
 "@types/hammerjs@npm:^2.0.36":
   version: 2.0.45
   resolution: "@types/hammerjs@npm:2.0.45"
@@ -8485,6 +8503,7 @@ __metadata:
     "@react-navigation/bottom-tabs": "npm:^6.5.11"
     "@react-navigation/native": "npm:^6.1.9"
     "@react-navigation/native-stack": "npm:^6.9.17"
+    "@tanstack/react-query": "npm:^5.28.6"
     expo: "npm:^49.0.21"
     expo-asset: "npm:~8.10.1"
     expo-camera: "npm:~13.4.4"

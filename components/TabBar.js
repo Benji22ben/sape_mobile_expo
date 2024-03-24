@@ -21,14 +21,14 @@ function TabBar({ navigation }) {
         iconColor={theme.colors.secondary}
         size={28}
         rippleColor={"#FFFFFF"}
-        // onPress={() => navigation.navigate("TabHome")}
+        onPress={() => navigation.navigate("TabHome")}
       />
       <IconButton
         icon={"fontawesome_tshirt"}
         iconColor={theme.colors.secondary}
         size={25}
         rippleColor={"#FFFFFF"}
-        onPress={() => navigation.navigate("TabHome")}
+        // onPress={() => navigation.navigate("TabHome")}
       />
       <IconButton
         icon={"entypo_shuffle"}
@@ -51,7 +51,7 @@ function TabBar({ navigation }) {
         iconColor={theme.colors.secondary}
         size={25}
         rippleColor={"#FFFFFF"}
-        // onPress={() => navigation.navigate("Camera")}
+        onPress={() => navigation.navigate("UserOptions")}
       />
     </View>
   );

@@ -1,4 +1,7 @@
 import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useQuery } from "@tanstack/react-query";
+import { SAPE, OUTFITS } from "../constants";
 
 function useSape() {
   function getScoreColor(score) {
@@ -11,6 +14,54 @@ function useSape() {
     }
     return "#202020";
   }
+
+  async function getSape() {
+    const token = await AsyncStorage.getItem("token");
+    console.log(token);
+    const response = await fetch(SAPE, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  }
+
+  async function getOutfits() {
+    const token = await AsyncStorage.getItem("token");
+    const response = await fetch(OUTFITS, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+
+  const {
+    isLoading: isOutfitsLoading,
+    error: errorOnOutfits,
+    data: outfits,
+  } = useQuery({
+    queryKey: ["outfits"],
+    queryFn: () => getOutfits(),
+  });
+
+  console.log(outfits);
+
+  const {
+    isLoading: isclothesLoading,
+    error: errorOnClothes,
+    data: clothes,
+  } = useQuery({
+    queryKey: ["clothes"],
+    queryFn: () => getSape(),
+  });
 
   const pull = {
     id: 1,
@@ -65,7 +116,7 @@ function useSape() {
     [pull, pant, socks, shoes],
   ]);
 
-  return { sape, fits, getScoreColor, outfitOfTheDay, pull };
+  return { sape, fits, getScoreColor, outfitOfTheDay, pull, getSape };
 }
 
 export default useSape;

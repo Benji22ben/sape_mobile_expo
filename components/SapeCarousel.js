@@ -13,7 +13,7 @@ function SapeCarousel({
   const width = Dimensions.get("window").width;
 
   return (
-    <View style={{ flex: 1, gap: 10 }}>
+    <View style={{ flex: 1, gap: 10, paddingLeft: 30 }}>
       <Text style={{ fontWeight: "bold", fontSize: 20 }}>{label}</Text>
       <Carousel
         loop={loop}

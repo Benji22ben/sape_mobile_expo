@@ -49,6 +49,7 @@ function Routes() {
     checkAuth();
   }, []);
 
+  console.log("isAuth", isAuth);
   return (
     <PaperProvider
       theme={mode === "eco" ? eco_theme : sape_theme}
@@ -63,19 +64,26 @@ function Routes() {
             headerShown: false, // This will hide the title bar
           }}
         >
-          <Stack.Screen
-            name="Authentication"
-            component={AuthenticationScreen}
-          />
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="StackHome" component={TabNavigator} />
+          {!isAuth ? (
+            <>
+              <Stack.Screen
+                name="Authentication"
+                component={AuthenticationScreen}
+              />
+              <Stack.Screen name="Login" component={LoginScreen} />
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="StackHome" component={TabNavigator} />
 
-          {/* Camera Navigation */}
-          <Stack.Group>
-            <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="AddSapeForm" component={AddSapeForm} />
-            <Stack.Screen name="AddedSape" component={AddedSape} />
-          </Stack.Group>
+              {/* Camera Navigation */}
+              <Stack.Group>
+                <Stack.Screen name="Camera" component={CameraScreen} />
+                <Stack.Screen name="AddSapeForm" component={AddSapeForm} />
+                <Stack.Screen name="AddedSape" component={AddedSape} />
+              </Stack.Group>
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

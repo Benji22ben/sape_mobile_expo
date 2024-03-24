@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 import ModeContext from "../context/ModeContext";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import SapeCarousel from "../components/SapeCarousel";
 import useSape from "../hooks/useSape";
 import SapeImageCard from "../components/SapeImageCard";
-import ScrollBox from "../components/core/ScrollBox";
 
 function EcoHomeScreen() {
   const theme = useTheme();
@@ -17,49 +16,53 @@ function EcoHomeScreen() {
   const [score, setScore] = useState(Math.random() * 100);
 
   return (
-    <ScrollBox gap={88}>
+    <ScrollView style={{ flex: 1 }}>
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
+          gap: 88,
+          ...theme.paddings,
+          paddingTop: 65,
+          paddingBottom: 30,
         }}
       >
-        <View style={{ gap: 6 }}>
-          <Text style={{ fontSize: 28 }}>Bonjour Julien</Text>
-          <Text style={{ fontSize: 16 }}>Ton score est au top 🤩​</Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={{ gap: 6 }}>
+            <Text style={{ fontSize: 28 }}>Bonjour Julien</Text>
+            <Text style={{ fontSize: 16 }}>Ton score est au top 🤩​</Text>
+          </View>
+          <IconButton
+            mode="contained"
+            containerColor={theme.colors.primary}
+            icon={"entypo_leaf"}
+            iconColor={"#FFFFFF"}
+            size={20}
+            rippleColor={"#FFFFFF"}
+            onPress={() => toggleMode()}
+          />
         </View>
-        <IconButton
-          mode="contained"
-          containerColor={theme.colors.primary}
-          icon={"entypo_leaf"}
-          iconColor={"#FFFFFF"}
-          size={20}
-          rippleColor={"#FFFFFF"}
-          onPress={() => toggleMode()}
-        />
+        <AnimatedCircularProgress
+          size={180}
+          rotation={0}
+          width={20}
+          fill={score}
+          style={{ alignSelf: "center", marginBottom: 88 }}
+          tintColor={theme.colors.primary}
+          onAnimationComplete={() => console.log("onAnimationComplete")}
+          backgroundColor="#E1E1E1"
+        >
+          {(score) => (
+            <Text
+              style={{
+                color: theme.colors.primary,
+                fontWeight: "bold",
+                fontSize: 50,
+              }}
+            >
+              {Math.round(score)}
+            </Text>
+          )}
+        </AnimatedCircularProgress>
       </View>
-      <AnimatedCircularProgress
-        size={180}
-        rotation={0}
-        width={20}
-        fill={score}
-        style={{ alignSelf: "center" }}
-        tintColor={theme.colors.primary}
-        onAnimationComplete={() => console.log("onAnimationComplete")}
-        backgroundColor="#E1E1E1"
-      >
-        {(score) => (
-          <Text
-            style={{
-              color: theme.colors.primary,
-              fontWeight: "bold",
-              fontSize: 50,
-            }}
-          >
-            {Math.round(score)}
-          </Text>
-        )}
-      </AnimatedCircularProgress>
       <SapeCarousel
         label="Tes derniers ajouts"
         data={sape}
@@ -67,7 +70,7 @@ function EcoHomeScreen() {
           return <>{item && SapeImageCard({ index, item })}</>;
         }}
       />
-    </ScrollBox>
+    </ScrollView>
   );
 }
 
