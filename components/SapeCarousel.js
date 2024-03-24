@@ -24,7 +24,7 @@ function SapeCarousel({
           activeOffsetX: [-10, 10],
         }}
         width={width / 2}
-        height={width / 1.3}
+        height={width / 1.2}
         data={data}
         onSnapToItem={onSnapToItem}
         renderItem={renderItem}

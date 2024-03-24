@@ -8,6 +8,7 @@ function BaseCarouselCard({ children, index, ...props }) {
       style={{
         flex: 1,
         justifyContent: "center",
+        shadowOpacity: 0,
         marginLeft: index > 0 ? 10 : 0,
         backgroundColor: "#D9D9D9",
         ...props.style,

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View } from "react-native";
+import { TouchableWithoutFeedback, View, Keyboard } from "react-native";
 import { useTheme, Text, TextInput, Icon } from "react-native-paper";
 import Logo from "../components/svg/Logo";
 import { useNavigation } from "@react-navigation/native";
@@ -9,12 +9,17 @@ import GoBack from "../components/core/GoBack";
 import PrimaryButton from "../components/core/Buttons/PrimaryButton";
 import ModeContext from "../context/ModeContext";
 import Box from "../components/core/Box";
+import { useAuth } from "../hooks/useAuth";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 function LoginScreen({}) {
   const navigation = useNavigation();
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const { toggleMode } = useContext(ModeContext);
+  const { login } = useAuth();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   const [seeText, setSeeText] = React.useState(true);
 
@@ -24,33 +29,42 @@ function LoginScreen({}) {
 
   const handleLogin = async () => {
     // toggleMode();
-    // @ts-ignore
-    navigation.navigate("StackHome");
+    const statut = await login(email, password);
+
+    if (statut.status === 200) {
+      //@ts-ignore
+      navigation.navigate("StackHome");
+    }
   };
 
   return (
     <Box style={{ justifyContent: "space-between" }}>
       <GoBack />
-      <Logo style={{ alignSelf: "center" }} />
-      <View
-        style={{
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
           gap: 50,
+          paddingTop: 65,
+          paddingBottom: 30,
         }}
       >
+        <Logo style={{ alignSelf: "center" }} />
         <View>
           <Text>Se Connecter</Text>
           <Text>
-            Entrez votre nom d'utilisateur et{"\n"}mot de passe afin de vous
-            connectez
+            Entrez votre email et{"\n"}mot de passe afin de vous connectez
           </Text>
         </View>
         <TextInput
+          autoCorrect={false}
+          onChangeText={(email) => setEmail(email)}
           left={
             <TextInput.Icon icon="ant_user" color={theme.colors.secondary} />
           }
-          placeholder="Nom d'utilisateur"
+          placeholder="Email"
         />
         <TextInput
+          autoCorrect={false}
+          onChangeText={(pwd) => setPassword(pwd)}
           left={
             <TextInput.Icon icon="ant_lock" color={theme.colors.secondary} />
           }
@@ -65,7 +79,7 @@ function LoginScreen({}) {
           secureTextEntry={seeText}
         />
         <PrimaryButton onPress={() => handleLogin()}>Connexion</PrimaryButton>
-      </View>
+      </KeyboardAwareScrollView>
       <WrittenSape style={{ alignSelf: "center" }} />
     </Box>
   );

@@ -3,7 +3,8 @@
       "module": "ESNext",
       "moduleResolution": "Node",
       "target": "ES2020",
-      "jsx": "react"
+      "jsx": "react",
+      "checkJs": true,
     },
     "exclude": [
       "node_modules"

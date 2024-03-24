@@ -1,5 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { PaperProvider } from "react-native-paper";
 import AuthenticationScreen from "./screens/AuthenticationScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -7,18 +7,18 @@ import { sape_theme, eco_theme } from "./sape_theme";
 import LoginScreen from "./screens/LoginScreen";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import ModeContext from "./context/ModeContext";
 import TabNavigator from "./TabNavigator";
 import CameraScreen from "./screens/CameraScreen";
 import AddSapeForm from "./screens/AddSapeForm";
 import AddedSape from "./screens/AddedSape";
+import { AuthContext } from "./context/AuthContext";
 
 function Routes() {
-  const isAuth = 0;
-
   const Stack = createNativeStackNavigator();
-
   const { mode } = useContext(ModeContext);
+  const { isAuth, checkAuth } = useContext(AuthContext);
 
   const Icon = (props) => {
     switch (props.name.split("_")[0]) {
@@ -34,10 +34,20 @@ function Routes() {
           name: props.name.split("_")[1],
         };
         return <Entypo {...entypoProps} />;
+      case "fontawesome":
+        const fontawesome_props = {
+          ...props,
+          name: props.name.split("_")[1],
+        };
+        return <FontAwesome5 {...fontawesome_props} />;
       default:
         return null;
     }
   };
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   return (
     <PaperProvider

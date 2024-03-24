@@ -7,16 +7,13 @@ import BaseCarouselCard from "../components/BaseCarouselCard";
 import useSape from "../hooks/useSape";
 import { useNavigation } from "@react-navigation/native";
 import ScrollBox from "../components/core/ScrollBox";
+import ImageCarousel from "../components/ImageCarousel";
 
 function SapeHomeScreen({}) {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
   const { fits } = useSape();
-  const margin = 4;
   const navigation = useNavigation();
-
-  const width = Dimensions.get("window").width / 2 - margin * (2 + 1);
-  const height = Dimensions.get("window").height / 3 - margin * (3 + 1);
 
   return (
     <ScrollBox gap={88}>
@@ -26,9 +23,9 @@ function SapeHomeScreen({}) {
           justifyContent: "space-between",
         }}
       >
-        <View>
-          <Text>Bonjour Julien</Text>
-          <Text>Tu as créer 46 outfits</Text>
+        <View style={{ gap: 6 }}>
+          <Text style={{ fontSize: 28 }}>Bonjour Julien</Text>
+          <Text style={{ fontSize: 16 }}>Tu as créer 46 outfits</Text>
         </View>
         <IconButton
           mode="contained"
@@ -62,76 +59,12 @@ function SapeHomeScreen({}) {
             onPress={() => navigation.navigate("FitCreation")}
           />
         </View>
-        <Text style={{ alignSelf: "center" }}>Génère ton outfit 😎</Text>
+        <Text style={{ alignSelf: "center", fontSize: 24 }}>
+          Génère ton outfit 😎
+        </Text>
       </View>
-      <SapeCarousel
-        label="Tes tenues favorites"
-        data={fits}
-        renderItem={({ index, item }) => {
-          return (
-            <BaseCarouselCard
-              key={index}
-              index={index}
-              style={{
-                flexWrap: "wrap",
-                alignContent: "center",
-                flexDirection: "row",
-                backgroundColor: "#FFFFFF",
-              }}
-            >
-              {item &&
-                item.map((item, index) => {
-                  return (
-                    <Image
-                      style={{
-                        width: width / 2.5,
-                        height: height / 3.4,
-                        margin: margin,
-                        resizeMode: "contain",
-                      }}
-                      key={index}
-                      source={item.image}
-                    />
-                  );
-                })}
-            </BaseCarouselCard>
-          );
-        }}
-      />
-      <SapeCarousel
-        label="Tes tenues de la semaine"
-        data={fits}
-        renderItem={({ index, item }) => {
-          return (
-            <BaseCarouselCard
-              key={index}
-              index={index}
-              style={{
-                flexWrap: "wrap",
-                alignContent: "center",
-                flexDirection: "row",
-                backgroundColor: "#FFFFFF",
-              }}
-            >
-              {item &&
-                item.map((item, index) => {
-                  return (
-                    <Image
-                      style={{
-                        width: width / 2.5,
-                        height: height / 3.4,
-                        margin: margin,
-                        resizeMode: "contain",
-                      }}
-                      key={index}
-                      source={item.image}
-                    />
-                  );
-                })}
-            </BaseCarouselCard>
-          );
-        }}
-      />
+      <ImageCarousel fits={fits} label="Tes tenues de la semaine" />
+      <ImageCarousel fits={fits} label="Tes tenues favorites" />
     </ScrollBox>
   );
 }

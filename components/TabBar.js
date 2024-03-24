@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View } from "react-native";
 import { IconButton, useTheme } from "react-native-paper";
 
 function TabBar({ navigation }) {
@@ -10,14 +10,23 @@ function TabBar({ navigation }) {
       style={{
         flexDirection: "row",
         justifyContent: "space-around",
-        alignItems: "center",
-        height: 66,
+        height: 86,
+        borderWidth: 1,
+        borderColor: "rgba(0, 0, 0, 0.05)",
+        backgroundColor: theme.colors.tertiary,
       }}
     >
       <IconButton
         icon={"entypo_home"}
         iconColor={theme.colors.secondary}
-        size={30}
+        size={28}
+        rippleColor={"#FFFFFF"}
+        // onPress={() => navigation.navigate("TabHome")}
+      />
+      <IconButton
+        icon={"fontawesome_tshirt"}
+        iconColor={theme.colors.secondary}
+        size={25}
         rippleColor={"#FFFFFF"}
         onPress={() => navigation.navigate("TabHome")}
       />
@@ -33,9 +42,16 @@ function TabBar({ navigation }) {
       <IconButton
         icon={"ant_plus"}
         iconColor={theme.colors.secondary}
-        size={30}
+        size={28}
         rippleColor={"#FFFFFF"}
         onPress={() => navigation.navigate("Camera")}
+      />
+      <IconButton
+        icon={"fontawesome_user-tie"}
+        iconColor={theme.colors.secondary}
+        size={25}
+        rippleColor={"#FFFFFF"}
+        // onPress={() => navigation.navigate("Camera")}
       />
     </View>
   );

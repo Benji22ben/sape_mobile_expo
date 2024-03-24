@@ -6,12 +6,12 @@ import { useTheme, Button, Text } from "react-native-paper";
 import PrimaryButton from "../components/core/Buttons/PrimaryButton";
 import SecondaryButton from "../components/core/Buttons/SecondaryButton";
 import WrittenLogo from "../components/svg/WrittenLogo";
+import { useAuth } from "../hooks/useAuth";
 
 function AuthenticationScreen() {
   const theme = useTheme();
   const [noAccountIsPressed, setNoAccountIsPressed] = React.useState(false);
   const navigation = useNavigation();
-
   const handleNoAccountPress = () => {
     setNoAccountIsPressed(!noAccountIsPressed);
   };
