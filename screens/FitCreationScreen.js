@@ -17,7 +17,6 @@ function FitCreationScreen() {
   const height = Dimensions.get("window").height;
   return (
     <ScrollBox gap={38}>
-      <GoBack />
       <Text style={{ alignSelf: "center" }}>La Tenue du jour</Text>
       <Text>
         Sape te propose cette tenue pour aujourd’hui te convient elle ? 😍​

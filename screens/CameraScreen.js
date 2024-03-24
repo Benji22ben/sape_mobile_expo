@@ -2,7 +2,7 @@ import { CameraType, Camera } from "expo-camera";
 import React, { useEffect, useState } from "react";
 import { View, TouchableOpacity, Text, Dimensions } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import { useTheme } from "react-native-paper";
+import { useTheme, IconButton } from "react-native-paper";
 import Box from "../components/core/Box";
 import { useNavigation } from "@react-navigation/native";
 import GoBack from "../components/core/GoBack";
@@ -47,40 +47,47 @@ function CameraScreen() {
       style={{
         flex: 1,
         justifyContent: "space-between",
-        ...theme.paddings,
-        paddingTop: 50,
-        paddingBottom: 30,
       }}
       type={type}
     >
-      {/* <Box
-      style={{
-        backgroundColor: "#020202",
-        justifyContent: "space-between",
-      }}
-    > */}
-      <GoBack color={theme.colors.tertiary} />
+      <View
+        style={{
+          paddingTop: 50,
+          paddingBottom: 50,
+          paddingLeft: 10,
+          backgroundColor: "black",
+        }}
+      >
+        <GoBack color={theme.colors.tertiary} />
+      </View>
       <View
         style={{
           flexDirection: "row",
           alignItems: "center",
           alignSelf: "stretch",
+          backgroundColor: "black",
           justifyContent: "space-between",
+          ...theme.paddings,
+          paddingTop: 30,
+          paddingBottom: 100,
         }}
       >
-        <TouchableOpacity onPress={toggleCameraType}>
-          <Text style={{ color: "#FFF" }}>Flip</Text>
-        </TouchableOpacity>
+        <IconButton
+          icon={"ant_retweet"}
+          iconColor={theme.colors.tertiary}
+          size={30}
+          rippleColor={"#FFFFFF"}
+          onPress={toggleCameraType}
+        />
         <View
           style={{
             width: 70,
             height: 70,
             borderRadius: 100,
-            borderColor: "#FFF",
+            borderColor: theme.colors.tertiary,
             borderWidth: 5,
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0)",
           }}
         >
           {/* @ts-ignore */}
@@ -96,11 +103,13 @@ function CameraScreen() {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={toggleCameraType}>
-          <Text style={{ color: "#FFF" }}>Gallery</Text>
-        </TouchableOpacity>
+        <IconButton
+          icon={"ant_picture"}
+          iconColor={theme.colors.tertiary}
+          size={30}
+          rippleColor={"#FFFFFF"}
+        />
       </View>
-      {/* </Box> */}
     </Camera>
   );
 }
