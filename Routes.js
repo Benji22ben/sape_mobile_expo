@@ -49,7 +49,6 @@ function Routes() {
     checkAuth();
   }, []);
 
-  console.log("isAuth", isAuth);
   return (
     <PaperProvider
       theme={mode === "eco" ? eco_theme : sape_theme}

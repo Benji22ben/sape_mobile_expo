@@ -1,19 +1,24 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Image, View, Text, Dimensions } from "react-native";
+import React, { useEffect } from "react";
+import { Image, View, Text, Dimensions, ActivityIndicator } from "react-native";
 import ScrollBox from "../components/core/ScrollBox";
 import GoBack from "../components/core/GoBack";
 import useSape from "../hooks/useSape";
 import { IconButton, useTheme } from "react-native-paper";
 import PrimaryButton from "../components/core/Buttons/PrimaryButton";
+import { useImage } from "../hooks/useImage";
 
-function AddSapeForm() {
-  const navigation = useNavigation();
-  const { pull } = useSape();
+function AddSapeForm({ route, navigation }) {
   const theme = useTheme();
-
+  const { photoData } = route.params;
   const width = Dimensions.get("window").width;
   const height = Dimensions.get("window").height;
+  const { rembgImage, isPendingImage, removedBgImage } = useImage();
+
+  useEffect(() => {
+    rembgImage(photoData);
+  }, [photoData]);
+
   return (
     <ScrollBox
       contentContainerStyle={{
@@ -21,11 +26,26 @@ function AddSapeForm() {
         height: height * 2,
       }}
     >
-      <GoBack style={{ alignSelf: "flex-start" }} />
-      <Image
-        source={pull.image}
-        style={{ height: "25%", resizeMode: "contain", alignSelf: "center" }}
-      />
+      <GoBack style={{ alignSelf: "flex-start", marginLeft: -20 }} />
+      {isPendingImage ? (
+        <ActivityIndicator
+          size={100}
+          style={{ marginBottom: 20 }}
+          animating={true}
+          color={theme.colors.primary}
+        />
+      ) : (
+        <Image
+          source={{ uri: `data:image/png;base64,${removedBgImage?.image}` }}
+          style={{
+            width: "100%",
+            height: 400,
+            resizeMode: "cover",
+            alignSelf: "center",
+            marginBottom: 20,
+          }}
+        />
+      )}
       <View
         style={{
           backgroundColor: theme.colors.quaternary,

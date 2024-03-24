@@ -9,8 +9,11 @@ import ImageCarousel from "../components/ImageCarousel";
 function SapeHomeScreen({}) {
   const theme = useTheme();
   const { toggleMode } = useContext(ModeContext);
-  const { fits, getSape, outfit } = useSape();
+  const { fits, getSape, outfits } = useSape();
   const navigation = useNavigation();
+
+  const outfits_data = outfits?.outfits;
+  const user = outfits?.user;
 
   return (
     <ScrollView style={{ flex: 1 }}>
@@ -29,8 +32,12 @@ function SapeHomeScreen({}) {
           }}
         >
           <View style={{ gap: 6 }}>
-            <Text style={{ fontSize: 28 }}>Bonjour Julien</Text>
-            <Text style={{ fontSize: 16 }}>Tu as créer 46 outfits</Text>
+            <Text style={{ fontSize: 28 }}>
+              Bonjour {user && user.firstname}{" "}
+            </Text>
+            <Text style={{ fontSize: 16 }}>
+              Tu as créer {outfits_data && outfits_data.length} outfits
+            </Text>
           </View>
           <IconButton
             mode="contained"

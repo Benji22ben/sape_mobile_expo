@@ -1,17 +1,16 @@
 import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { useAuth } from "../hooks/useAuth";
 // @ts-ignore
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
+  const { checkAuthent } = useAuth();
 
   const checkAuth = async () => {
-    const token = await AsyncStorage.getItem("token");
-    if (token) {
-      setIsAuth(true);
-    }
+    setIsAuth(await checkAuthent());
+    console.log(isAuth);
   };
 
   const logout = async () => {

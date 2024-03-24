@@ -17,7 +17,6 @@ function useSape() {
 
   async function getSape() {
     const token = await AsyncStorage.getItem("token");
-    console.log(token);
     const response = await fetch(SAPE, {
       method: "GET",
       headers: {
@@ -116,7 +115,7 @@ function useSape() {
     [pull, pant, socks, shoes],
   ]);
 
-  return { sape, fits, getScoreColor, outfitOfTheDay, pull, getSape };
+  return { sape, fits, getScoreColor, outfits, outfitOfTheDay, pull, getSape };
 }
 
 export default useSape;
