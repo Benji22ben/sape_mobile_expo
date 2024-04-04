@@ -14,6 +14,7 @@ import CameraScreen from "./screens/CameraScreen";
 import AddSapeForm from "./screens/AddSapeForm";
 import AddedSape from "./screens/AddedSape";
 import { AuthContext } from "./context/AuthContext";
+import OptionsSelectionScreen from "./screens/OptionsSelectionScreen";
 
 function Routes() {
   const Stack = createNativeStackNavigator();
@@ -75,11 +76,12 @@ function Routes() {
             <>
               <Stack.Screen name="StackHome" component={TabNavigator} />
 
-              {/* Camera Navigation */}
+              {/* Adding Sape Navigation */}
               <Stack.Group>
                 <Stack.Screen name="Camera" component={CameraScreen} />
                 <Stack.Screen name="AddSapeForm" component={AddSapeForm} />
                 <Stack.Screen name="AddedSape" component={AddedSape} />
+                <Stack.Screen name="OptionsSelection" component={OptionsSelectionScreen} />
               </Stack.Group>
             </>
           )}

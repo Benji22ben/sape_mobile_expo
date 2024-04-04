@@ -1,8 +1,11 @@
 import React from "react";
 import { Button as PaperButton, useTheme } from "react-native-paper";
 
-function Button({ children, ...props }) {
+function Button({ children, textColor = "", ...props }) {
   const theme = useTheme();
+  if (textColor == "") {
+    textColor = theme.colors.secondary;
+  }
 
   return (
     <PaperButton
@@ -13,7 +16,7 @@ function Button({ children, ...props }) {
         ...props.style,
       }}
       rippleColor={theme.colors.onPrimary}
-      textColor={theme.colors.secondary}
+      textColor={textColor}
     >
       {children}
     </PaperButton>
